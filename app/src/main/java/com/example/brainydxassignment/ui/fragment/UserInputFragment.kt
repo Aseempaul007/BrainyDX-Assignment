@@ -33,55 +33,13 @@ class UserInputFragment : Fragment() {
         binding = FragmentUserInputBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(UserViewmodel::class.java)
 
-        binding!!.textView.setOnClickListener {
-            val c = Calendar.getInstance()
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-
-            val datePickerDialog = DatePickerDialog(
-                requireContext(),
-                { view, year, monthOfYear, dayOfMonth ->
-                    binding!!.textView.text =
-                        (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
-                    viewModel!!.startDate = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
-                },
-                year,
-                month,
-                day
-            )
-            datePickerDialog.show()
-        }
-
-        binding!!.textView2.setOnClickListener {
-            val c = Calendar.getInstance()
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-
-            val datePickerDialog = DatePickerDialog(
-                requireContext(),
-                { view, year, monthOfYear, dayOfMonth ->
-
-                    binding!!.textView2.text =
-                        (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
-                    viewModel!!.endDate = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
-
-                },
-                year,
-                month,
-                day
-            )
-            datePickerDialog.show()
-        }
-
         binding!!.button.setOnClickListener {
             viewModel?.userName = binding!!.userName.text.toString()
             viewModel?.userRepo = binding!!.userRepo.text.toString()
 
             val fm = activity?.supportFragmentManager
             val ft = fm?.beginTransaction()
-            ft?.replace(R.id.newsFrame,ListFragment())
+            ft?.replace(R.id.newsFrame, ListFragment())
             ft?.commit()
         }
         return binding!!.root

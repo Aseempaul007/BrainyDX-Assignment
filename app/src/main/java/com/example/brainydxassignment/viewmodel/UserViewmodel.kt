@@ -8,12 +8,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class UserViewmodel @Inject constructor(private val repository: UserRepository): ViewModel() {
+class UserViewmodel @Inject constructor(private val repository: UserRepository) : ViewModel() {
 
     var userName: String = ""
     var userRepo: String = ""
-    var startDate = ""
-    var endDate = ""
 
     suspend fun getUsers(
         owner: String,

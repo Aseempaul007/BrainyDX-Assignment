@@ -30,13 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         viewmodel = ViewModelProvider(this)[UserViewmodel::class.java]
 
-        goToFragment(supportFragmentManager,UserInputFragment())
+        goToFragment(supportFragmentManager, UserInputFragment())
 
     }
-
-    fun goToFragment(fm: FragmentManager, fragment: Fragment){
+    fun goToFragment(fm: FragmentManager, fragment: Fragment) {
         val ft = fm.beginTransaction()
-        ft.replace(R.id.newsFrame,fragment)
+        ft.replace(R.id.newsFrame, fragment)
         ft.commit()
     }
 }
